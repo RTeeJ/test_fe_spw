@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../component/component_styles.dart';
 import 'package:get/get.dart';
 import '../model/product.dart';
 import '../page/product_page.dart';
@@ -49,7 +50,7 @@ class ProductItemWidget extends StatelessWidget {
                     child: Text(
                       product.name,
                       style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                      overflow: TextOverflow.ellipsis,
+                      overflow: TextOverflow.ellipsis, // handle long texts
                       maxLines: 1,
                     ),
                 ),

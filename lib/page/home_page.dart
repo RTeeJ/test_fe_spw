@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../component/component_styles.dart';
 import '../component/product_item_widget.dart';
 import '../controller/home_controller.dart';
 
@@ -10,7 +11,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('For You', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)) , centerTitle: false,),
+      appBar: AppBar(title: const Text('For You', style: ComponentStyles.appBarTitleStyle), centerTitle: false),
       body: buildGridView(),
     );
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:test_fe_spw/component/common_styles.dart';
 
+import '../component/component_styles.dart';
 import '../controller/cart_controller.dart';
 import 'checkout_page.dart';
 
@@ -11,7 +13,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Cart', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)) , centerTitle: false,),
+      appBar: AppBar(title: const Text('Cart', style: ComponentStyles.appBarTitleStyle), centerTitle: false),
       body: Obx(() {
         if (controller.cartItems.isEmpty) {
            return const Center(
@@ -19,10 +21,10 @@ class CartPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: EdgeInsets.only(bottom: 10),
+                              padding: CommonStyles.padding_bottom_10,
                               child: Icon(Icons.remove_shopping_cart, size: 150, color: Colors.grey,),
                             ),
-                            Text('Your cart is empty', style: TextStyle( fontSize: 25,fontWeight: FontWeight.bold)),
+                            Text('Your cart is empty', style: ComponentStyles.noItemTextStyle),
                           ],
                         )
                       );
@@ -34,6 +36,7 @@ class CartPage extends StatelessWidget {
                 itemCount: controller.cartItems.length,
                 itemBuilder: (context, index) {
                   final item = controller.cartItems[index];
+                  // slide to delete
                   return Dismissible(
                     key: UniqueKey(),
                     background: Container(
@@ -45,7 +48,7 @@ class CartPage extends StatelessWidget {
                         title: Row(
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
+                              borderRadius: CommonStyles.border_radius_8,
                               child: Image.network(
                                           item.imageUrl, 
                                           fit: BoxFit.cover,
@@ -55,25 +58,22 @@ class CartPage extends StatelessWidget {
                             ),
                             Flexible(
                               child: Padding(
-                                padding: const EdgeInsets.only(left: 15),
+                                padding: CommonStyles.padding_left_16,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
                                       item.name,
-                                      style: const TextStyle(fontWeight: FontWeight.bold),
-                                      overflow: TextOverflow.ellipsis,
+                                      style: CommonStyles.textBoldStyle,
+                                      overflow: TextOverflow.ellipsis, // handle long texts
                                     ),
                                     Text(NumberFormat.currency(locale: 'en_US', symbol: '\$', decimalDigits: item.price.truncateToDouble() == item.price ? 0 : 2).format(item.price * item.quantity),
-                                        style: const TextStyle(fontWeight: FontWeight.bold)
+                                        style: CommonStyles.textBoldStyle
                                         ),
                                     Container(
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(5),
-                                        border: Border.all(
-                                          color: Colors.black,
-                                          width: 1, 
-                                        ),
+                                        borderRadius: CommonStyles.border_radius_6,
+                                        border: CommonStyles.border_width_1,
                                       ),
                                       child: SizedBox(
                                         height: 40,
@@ -98,8 +98,7 @@ class CartPage extends StatelessWidget {
                                                 width: 50,
                                                 child: Center(
                                                   child: Text(
-                                                    '${item.quantity}', style: 
-                                                    const TextStyle(fontWeight: FontWeight.bold)
+                                                    '${item.quantity}', style: CommonStyles.textBoldStyle
                                                   ),
                                                 ),
                                               ),
@@ -128,7 +127,7 @@ class CartPage extends StatelessWidget {
             ),
             const Divider(),
             Padding(
-              padding: const EdgeInsets.all(16),
+              padding: CommonStyles.padding_all_16,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -137,7 +136,7 @@ class CartPage extends StatelessWidget {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(6),
+                                borderRadius: CommonStyles.border_radius_6,
                               ),
                     ),
                     onPressed: () {

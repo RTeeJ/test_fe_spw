@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:test_fe_spw/component/common_styles.dart';
 
+import '../component/component_styles.dart';
 import '../controller/cart_controller.dart';
 import '../model/cart_item.dart';
 import '../model/product.dart';
@@ -17,7 +19,7 @@ class ProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: const Text('Product Details'),
+        // title: const Text('Product Details', style: ComponentStyles.appBarTitleStyle),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => Get.back(),
@@ -27,9 +29,9 @@ class ProductPage extends StatelessWidget {
       Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only( left: 16, right: 16),
+            padding: CommonStyles.padding_left_right_16,
             child: ClipRRect(
-               borderRadius: BorderRadius.circular(6),
+               borderRadius: CommonStyles.border_radius_6,
               child: Image.network(
                 product.imageUrl,
                 fit: BoxFit.cover,
@@ -38,7 +40,7 @@ class ProductPage extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: CommonStyles.padding_all_16,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -51,7 +53,7 @@ class ProductPage extends StatelessWidget {
                         children: [
                           Text(
                             product.name,
-                            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                            style: ComponentStyles.productNameTextStyle,
                             softWrap: true, // Allow text to wrap to the next line if needed
                           ),
                         ],
@@ -64,7 +66,7 @@ class ProductPage extends StatelessWidget {
                       ),
                       color: product.isFavorite.value ? Colors.red : Colors.grey,
                       onPressed: () {
-                        product.isFavorite.toggle(); // Toggle the value of isFavorite
+                        product.isFavorite.toggle();
                       },
                     )),
                   ],
@@ -80,7 +82,7 @@ class ProductPage extends StatelessWidget {
           const Spacer(flex:  4),
 
           Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: CommonStyles.padding_all_16,
             child: Center(
                     child: SizedBox(
                       height: 50,
@@ -88,7 +90,7 @@ class ProductPage extends StatelessWidget {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6),
+                                    borderRadius: CommonStyles.border_radius_6,
                                   ),
                         ),
                         onPressed: () {
@@ -108,7 +110,7 @@ class ProductPage extends StatelessWidget {
                               '${product.name} added to cart successfully!', // snackbar message
                           );
                         },
-                        child: const Text('Add to Cart', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        child: const Text('Add to Cart', style: ComponentStyles.addToCartTextStyle),
                       ),
                     ),
                   ),
