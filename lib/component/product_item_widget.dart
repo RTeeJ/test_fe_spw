@@ -8,12 +8,13 @@ import 'package:intl/intl.dart';
 class ProductItemWidget extends StatelessWidget {
   final Product product;
 
-  const ProductItemWidget({Key? key, required this.product}) : super(key: key);
+  const ProductItemWidget({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        // Navigate to product details page
         Get.to(() => ProductPage(product: product));
       },
       child: Card(
@@ -29,6 +30,7 @@ class ProductItemWidget extends StatelessWidget {
                     child: Image.network(
                       product.imageUrl,
                       fit: BoxFit.cover,
+                      // Return widget to handle image error condition
                       errorBuilder: (BuildContext context, Object exception,
                           StackTrace? stackTrace) {
                         return const Center(

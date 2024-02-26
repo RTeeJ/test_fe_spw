@@ -88,7 +88,7 @@ class ProductPage extends StatelessWidget {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(6), // Button border radius
+                                    borderRadius: BorderRadius.circular(6),
                                   ),
                         ),
                         onPressed: () {

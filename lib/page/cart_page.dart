@@ -64,7 +64,7 @@ class CartPage extends StatelessWidget {
                                       style: const TextStyle(fontWeight: FontWeight.bold),
                                       overflow: TextOverflow.ellipsis,
                                     ),
-                                    Text(NumberFormat.currency(locale: 'en_US', symbol: '\$', decimalDigits: item.price.truncateToDouble() == item.price ? 0 : 2).format(item.price),
+                                    Text(NumberFormat.currency(locale: 'en_US', symbol: '\$', decimalDigits: item.price.truncateToDouble() == item.price ? 0 : 2).format(item.price * item.quantity),
                                         style: const TextStyle(fontWeight: FontWeight.bold)
                                         ),
                                     Container(

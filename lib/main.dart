@@ -9,6 +9,7 @@ import 'page/save_page.dart';
 
 void main()  async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Initialize AllProduct() and await to completion before running the app
   await Get.putAsync(() => AllProduct().init());
   runApp(const MyApp());
 }
@@ -32,12 +33,14 @@ class MainPage extends StatefulWidget {
 }
 class _MainPageState extends State<MainPage> {
 
+  // Reactive selected index
   final RxInt _selectedIndex = 0.obs;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Obx(() {
+        // Return page based on current index
         switch (_selectedIndex.value) {
           case 1:
             return SavedPage();
@@ -58,6 +61,7 @@ class _MainPageState extends State<MainPage> {
             ],
             currentIndex: _selectedIndex.value,
             onTap: (index) {
+              // Update the index on tap
               _selectedIndex.value = index;
             },
           )),
