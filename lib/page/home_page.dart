@@ -3,8 +3,6 @@ import 'package:get/get.dart';
 
 import '../component/product_item_widget.dart';
 import '../controller/home_controller.dart';
-import 'cart_page.dart';
-import 'save_page.dart';
 
 class HomePage extends StatelessWidget {
   final HomeController controller = Get.put(HomeController());
@@ -12,7 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('For You', style: TextStyle(fontWeight: FontWeight.bold)) , centerTitle: false,),
+      appBar: AppBar(title: const Text('For You', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)) , centerTitle: false,),
       body: buildGridView(),
     );
   }

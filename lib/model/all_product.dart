@@ -65,9 +65,7 @@ class AllProduct extends GetxService {
     .expand((element) => element['product_items'])
     .map<Product>((data) => Product.fromJson(data))
     .toList();
-
     productItems.addAll(products);
-
     return this;
   }
 }

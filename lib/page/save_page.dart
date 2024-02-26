@@ -11,10 +11,26 @@ class SavedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Saved', style: TextStyle(fontWeight: FontWeight.bold)) , centerTitle: false,),
+      appBar: AppBar(title: const Text('Saved', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold)) , centerTitle: false,),
       body: Obx(() {
+
         final savedProducts =
-            controller.productItems.where((p) => p.isFavorite.value).toList();
+            controller.productItems.where((product) => product.isFavorite.value).toList();
+
+        if (savedProducts.isEmpty) {
+          return const Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 10),
+                              child: Icon(Icons.favorite_border, size: 150, color: Colors.grey,),
+                            ),
+                            Text('No favourites yet', style: TextStyle( fontSize: 25,fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                      );
+        }
         return GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,

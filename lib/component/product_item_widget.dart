@@ -60,8 +60,8 @@ class ProductItemWidget extends StatelessWidget {
               ],
             ),
             Positioned(
-              top: 8,
-              right: 8,
+              top: 5,
+              right: 5,
               child: Obx(() => IconButton(
                     icon: Icon(product.isFavorite.value
                         ? Icons.favorite

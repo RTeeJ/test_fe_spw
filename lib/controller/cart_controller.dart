@@ -32,8 +32,11 @@ class CartController extends GetxController {
   }
 
   void decreaseQuantity(CartItem item) {
-    if (item.quantity > 1) {
+    if (item.quantity >= 1) {
       item.quantity--;
+      cartItems.refresh();
+    } if (item.quantity == 0) {
+      cartItems.remove(item);
       cartItems.refresh();
     }
   }
