@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../component/component_styles.dart';
 import 'package:get/get.dart';
 import '../model/product.dart';
 import '../page/product_page.dart';
